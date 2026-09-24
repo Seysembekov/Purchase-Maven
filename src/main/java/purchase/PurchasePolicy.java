@@ -1,13 +1,13 @@
 package purchase;
 
-public final class PurchasePolicy {
-    private PurchasePolicy() {}
-    public static PurchaseStatus move(PurchaseStatus from, PurchaseStatus to) {
-        if (from instanceof Draft && to instanceof Approved) {
-            return to;}
-        if (from instanceof Approved && to instanceof Ordered) {
-            return to;}
-        throw new IllegalStateException("purchase status transition: " + from.getClass().getSimpleName() + " -> " + to.getClass().getSimpleName()
-        );
+public class PurchasePolicy {
+    public boolean canTransition(PurchaseStatus from, PurchaseStatus to) {
+
+        return switch (from) {
+            case Draft ignored-> to instanceof Submitted;
+            case Submitted ignored-> to instanceof Approved;
+            case Approved ignored -> to instanceof Ordered;
+            case Ordered ignored -> to instanceof Completed;
+            case Completed ignored -> false;};
     }
 }
