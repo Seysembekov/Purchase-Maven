@@ -1,5 +1,5 @@
 package purchase;
 
 public sealed interface PurchaseStatus
-        permits Draft, Approved, Ordered {
+        permits Draft, Submitted, Approved, Ordered, Completed {
 }

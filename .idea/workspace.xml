@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="828ff2d5-d03c-47a7-b2eb-c0e99c1f362a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/Approved.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/Draft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/Ordered.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/PurchaseId.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/PurchasePolicy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/PurchaseStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/PurchaseId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/PurchaseId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/PurchasePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/PurchasePolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +28,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="3JSdhoxvrnvkBYIz12a8lMBhpei" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -47,7 +43,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -60,7 +56,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.PurchasePolicyTest">
     <configuration name="PurchaseIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="purchase-status-lab" />
       <extension name="coverage">
@@ -76,8 +72,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PurchaseIdTest.shouldfailtest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="purchase-status-lab" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="purchase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="purchase" />
+      <option name="MAIN_CLASS_NAME" value="purchase.PurchaseIdTest" />
+      <option name="METHOD_NAME" value="shouldfailtest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PurchasePolicyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="purchase-status-lab" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="purchase.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="purchase" />
+      <option name="MAIN_CLASS_NAME" value="purchase.PurchasePolicyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PurchasePolicyTest" />
+        <item itemvalue="JUnit.PurchaseIdTest.shouldfailtest" />
         <item itemvalue="JUnit.PurchaseIdTest" />
       </list>
     </recent_temporary>
@@ -90,7 +119,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1789658527486</updated>
-      <workItem from="1789658528652" duration="3764000" />
+      <workItem from="1789658528652" duration="13264000" />
     </task>
     <servers />
   </component>
