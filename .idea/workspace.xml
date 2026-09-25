@@ -4,20 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="828ff2d5-d03c-47a7-b2eb-c0e99c1f362a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/config/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/Approved.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Approved.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/Completed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Completed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/Draft.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Draft.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/Ordered.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Ordered.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/PurchaseId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/PurchasePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchasePolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/PurchaseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/Submitted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Submitted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="828ff2d5-d03c-47a7-b2eb-c0e99c1f362a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -130,7 +117,7 @@
       <updated>1789658527486</updated>
       <workItem from="1789658528652" duration="13264000" />
       <workItem from="1790241941376" duration="2395000" />
-      <workItem from="1790327861759" duration="4175000" />
+      <workItem from="1790327861759" duration="4480000" />
     </task>
     <servers />
   </component>
