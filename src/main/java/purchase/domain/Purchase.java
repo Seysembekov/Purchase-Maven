@@ -1,21 +1,26 @@
 package purchase.domain;
+
+import java.math.BigDecimal;
+
 public class Purchase {
+
     private final PurchaseId id;
     private final String productName;
-    private final String supplierName;
     private final int quantity;
-    private final Float unitPrice;
+    private final BigDecimal price;
+
     private PurchaseStatus status;
 
-    public Purchase(PurchaseId id, String productName,
-                    String supplierName, int quantity,
-                    Float unitPrice) {
-
+    public Purchase(
+            PurchaseId id,
+            String productName,
+            int quantity,
+            BigDecimal price
+    ) {
         this.id = id;
         this.productName = productName;
-        this.supplierName = supplierName;
         this.quantity = quantity;
-        this.unitPrice = unitPrice;
+        this.price = price;
         this.status = new Draft();
     }
 
@@ -27,25 +32,16 @@ public class Purchase {
         return productName;
     }
 
-    public String getSupplierName() {
-        return supplierName;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
-    public Float getUnitPrice() {
-        return unitPrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
     public PurchaseStatus getStatus() {
         return status;
-    }
-
-    public Float getTotalPrice() {
-        return unitPrice * quantity;
-
     }
 
     public void changeStatus(PurchaseStatus status) {
