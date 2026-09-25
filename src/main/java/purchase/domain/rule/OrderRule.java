@@ -1,4 +1,9 @@
-package purchase.domain;
+package purchase.domain.rule;
+
+import purchase.domain.Purchase;
+import purchase.domain.PurchaseId;
+import purchase.domain.PurchaseStatus;
+import purchase.domain.status.Ordered;
 
 import java.util.HashSet;
 import java.util.Set;

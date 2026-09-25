@@ -1,5 +1,7 @@
 package purchase.domain;
 
+import purchase.domain.status.Draft;
+
 import java.math.BigDecimal;
 
 public class Purchase {

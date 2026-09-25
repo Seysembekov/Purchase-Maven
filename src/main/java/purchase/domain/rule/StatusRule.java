@@ -1,4 +1,8 @@
-package purchase.domain;
+package purchase.domain.rule;
+
+import purchase.domain.Purchase;
+import purchase.domain.PurchasePolicy;
+import purchase.domain.PurchaseStatus;
 
 public class StatusRule implements PurchaseRule {
     private final PurchasePolicy policy;
