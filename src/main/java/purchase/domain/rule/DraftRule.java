@@ -1,4 +1,8 @@
-package purchase.domain;
+package purchase.domain.rule;
+
+import purchase.domain.Purchase;
+import purchase.domain.PurchaseStatus;
+import purchase.domain.status.Submitted;
 
 public class DraftRule implements PurchaseRule {
     @Override
