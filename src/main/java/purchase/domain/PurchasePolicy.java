@@ -1,4 +1,4 @@
-package purchase;
+package purchase.domain;
 
 public class PurchasePolicy {
     public boolean canTransition(PurchaseStatus from, PurchaseStatus to) {

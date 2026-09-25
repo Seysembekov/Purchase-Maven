@@ -1,6 +1,7 @@
 package purchase;
 
 import org.junit.jupiter.api.Test;
+import purchase.domain.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
