@@ -5,31 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="828ff2d5-d03c-47a7-b2eb-c0e99c1f362a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/config/PurchaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/config/RuleConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/rule/PurchaseRule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/status/Approved.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/status/Completed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/status/Draft.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/status/Ordered.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/status/Submitted.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/purchase/config/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/config/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/ApprovalRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/rule/ApprovalRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Approved.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Completed.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/CompletionRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/rule/CompletionRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Draft.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/DraftRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/rule/DraftRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/OrderRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/rule/OrderRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Ordered.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchasePolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchasePolicy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseRule.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/StatusRule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/rule/StatusRule.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Submitted.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchasePolicyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/config/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/config/PurchaseService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +26,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -78,7 +59,25 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="JUnit.PurchasePolicyTest">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="purchase.config" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.Application">
+    <configuration name="PurchaseDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="purchase.config.PurchaseDemo" />
+      <module name="purchase-status-lab" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="purchase.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="PurchaseIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="purchase-status-lab" />
       <extension name="coverage">
@@ -125,8 +124,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="purchase-status-lab" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="purchase.config.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="purchase.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.Application" />
+        <item itemvalue="Application.PurchaseDemo" />
         <item itemvalue="JUnit.PurchasePolicyTest" />
         <item itemvalue="JUnit.PurchaseIdTest.shouldfailtest" />
         <item itemvalue="JUnit.PurchaseIdTest" />
@@ -143,7 +157,7 @@
       <updated>1789658527486</updated>
       <workItem from="1789658528652" duration="13264000" />
       <workItem from="1790241941376" duration="2395000" />
-      <workItem from="1790327861759" duration="9148000" />
+      <workItem from="1790327861759" duration="11101000" />
     </task>
     <servers />
   </component>
