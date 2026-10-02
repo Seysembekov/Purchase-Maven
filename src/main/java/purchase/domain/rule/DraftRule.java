@@ -1,9 +1,8 @@
 package purchase.domain.rule;
 
 import purchase.domain.Purchase;
-import purchase.domain.PurchaseStatus;
+import purchase.domain.status.PurchaseStatus;
 import purchase.domain.status.Submitted;
-
 public class DraftRule implements PurchaseRule {
     @Override
     public void check(Purchase purchase, PurchaseStatus targetStatus) {
@@ -17,12 +16,9 @@ public class DraftRule implements PurchaseRule {
             throw new IllegalStateException("Product name is required");
         }
     }
-
     private void validateQuantity(Purchase purchase) {
         if (purchase.getQuantity() <= 0) {
-            throw new IllegalStateException(
-                    "Quantity must be greater than zero"
-            );
+            throw new IllegalStateException("Quantity must be greater than zero");
         }
     }
 }

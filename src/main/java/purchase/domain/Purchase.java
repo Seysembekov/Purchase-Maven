@@ -1,11 +1,11 @@
 package purchase.domain;
 
 import purchase.domain.status.Draft;
+import purchase.domain.status.PurchaseStatus;
 
 import java.math.BigDecimal;
 
 public class Purchase {
-
     private final PurchaseId id;
     private final String productName;
     private final int quantity;
