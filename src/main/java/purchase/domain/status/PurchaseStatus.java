@@ -1,4 +1,4 @@
-package purchase.domain;
+package purchase.domain.status;
 
 public interface PurchaseStatus {
 }

@@ -27,27 +27,19 @@ class PurchaseServiceTest {
     private CompletionRule completionRule;
     @Test
     void purchaseCanCompleteFullWorkflow() {
-
-        Purchase purchase = new Purchase(new PurchaseId("l-12341234"), "Laptop", 1, new BigDecimal("1000"));
+        Purchase purchase = new Purchase(new PurchaseId("l-12341234"), "Laptop", 1, new BigDecimal("123456"));
         purchaseService.move(purchase, new Submitted());
-
         approvalRule.approve(purchase.getId());
-
         purchaseService.move(purchase, new Approved());
-
         orderRule.markAvailable(purchase.getId());
-
         purchaseService.move(purchase, new Ordered());
-
         completionRule.confirmDelivery(purchase.getId());
-
         purchaseService.move(purchase,new Completed());
-
         assertEquals(new Completed(), purchase.getStatus());
     }
     @Test
     void cannotApproveWithoutManagerApproval() {
-        Purchase purchase = new Purchase(new PurchaseId("PUR-002"), "Laptop", 1, new BigDecimal("1000"));
+        Purchase purchase = new Purchase(new PurchaseId("p-1234554321"), "imac", 2, new BigDecimal("99999"));
         purchaseService.move(purchase, new Submitted());
         assertThrows(IllegalStateException.class, () -> purchaseService.move(purchase, new Approved()));
     }

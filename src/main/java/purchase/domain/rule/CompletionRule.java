@@ -2,7 +2,7 @@ package purchase.domain.rule;
 
 import purchase.domain.Purchase;
 import purchase.domain.PurchaseId;
-import purchase.domain.PurchaseStatus;
+import purchase.domain.status.PurchaseStatus;
 import purchase.domain.status.Completed;
 
 import java.util.HashSet;
@@ -12,19 +12,14 @@ public class CompletionRule implements PurchaseRule {
     private final Set<PurchaseId> deliveredPurchases = new HashSet<>();
     @Override
     public void check(Purchase purchase, PurchaseStatus targetStatus) {
-        if (targetStatus instanceof Completed
-                && !isDelivered(purchase)) {
-            throw new IllegalStateException(
-                    "Delivery is not confirmed"
-            );
+        if (targetStatus instanceof Completed && !isDelivered(purchase)) {
+            throw new IllegalStateException("Delivery isnt confirmed");
         }
     }
     public void confirmDelivery(PurchaseId purchaseId) {
         deliveredPurchases.add(purchaseId);
     }
     private boolean isDelivered(Purchase purchase) {
-        return deliveredPurchases.contains(
-                purchase.getId()
-        );
+        return deliveredPurchases.contains(purchase.getId());
     }
 }
