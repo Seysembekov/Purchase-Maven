@@ -13,12 +13,12 @@ public class DraftRule implements PurchaseRule {
     }
     private void validateProduct(Purchase purchase) {
         if (purchase.getProductName() == null || purchase.getProductName().isBlank()) {
-            throw new IllegalStateException("Product name is required");
+            throw new IllegalStateException("name is required");
         }
     }
     private void validateQuantity(Purchase purchase) {
         if (purchase.getQuantity() <= 0) {
-            throw new IllegalStateException("Quantity must be greater than zero");
+            throw new IllegalStateException("must be greater than zero");
         }
     }
 }

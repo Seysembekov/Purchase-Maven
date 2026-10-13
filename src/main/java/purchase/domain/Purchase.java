@@ -10,7 +10,6 @@ public class Purchase {
     private final String productName;
     private final int quantity;
     private final BigDecimal price;
-
     private PurchaseStatus status;
 
     public Purchase(PurchaseId id, String productName, int quantity, BigDecimal price) {
