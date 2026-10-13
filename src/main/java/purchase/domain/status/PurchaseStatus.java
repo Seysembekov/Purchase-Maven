@@ -1,4 +1,5 @@
 package purchase.domain.status;
 
-public interface PurchaseStatus {
+public sealed interface PurchaseStatus
+        permits Draft, Submitted, Approved, Ordered, Completed {
 }

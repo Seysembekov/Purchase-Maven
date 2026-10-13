@@ -3,21 +3,26 @@ package purchase.domain;
 import java.util.UUID;
 
 public record PurchaseId(String value) {
+
     public PurchaseId {
         if (value == null || value.isBlank()) {
-            throw new IllegalArgumentException("PurchaseId can't be null or blank");
+            throw new IllegalArgumentException(
+                    "PurchaseId can't be empty"
+            );
         }
-        try {
-            UUID parsed = UUID.fromString(value);
-            if (!parsed.toString().equalsIgnoreCase(value)) {
-                throw new IllegalArgumentException("PurchaseId must contain a canonical UUID");
-            }
-        } catch (IllegalArgumentException exception) {
-            throw new IllegalArgumentException("PurchaseId must contain a valid UUID", exception);
+
+        UUID uuid = UUID.fromString(value);
+
+        if (!uuid.toString().equalsIgnoreCase(value)) {
+            throw new IllegalArgumentException(
+                    "Invalid UUID format"
+            );
         }
     }
 
     public static PurchaseId newId() {
-        return new PurchaseId(UUID.randomUUID().toString());
+        return new PurchaseId(
+                UUID.randomUUID().toString()
+        );
     }
 }
