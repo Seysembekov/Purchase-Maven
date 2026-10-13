@@ -8,39 +8,88 @@ import purchase.domain.PurchaseId;
 import purchase.domain.rule.ApprovalRule;
 import purchase.domain.rule.CompletionRule;
 import purchase.domain.rule.OrderRule;
+import purchase.domain.rule.PurchaseRule;
 import purchase.domain.status.*;
+import purchase.persistence.PurchaseJdbc;
 
 import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 class PurchaseServiceTest {
+
     @Autowired
-    private PurchaseService purchaseService;
+    private PurchaseService service;
+
     @Autowired
-    private ApprovalRule approvalRule;
+    private ApprovalRule approval;
+
     @Autowired
-    private OrderRule orderRule;
+    private OrderRule order;
+
     @Autowired
-    private CompletionRule completionRule;
+    private CompletionRule completion;
+
     @Test
-    void purchaseCanCompleteFullWorkflow() {
-        Purchase purchase = new Purchase(new PurchaseId("l-12341234"), "Laptop", 1, new BigDecimal("123456"));
-        purchaseService.move(purchase, new Submitted());
-        approvalRule.approve(purchase.getId());
-        purchaseService.move(purchase, new Approved());
-        orderRule.markAvailable(purchase.getId());
-        purchaseService.move(purchase, new Ordered());
-        completionRule.confirmDelivery(purchase.getId());
-        purchaseService.move(purchase,new Completed());
+    void purchaseCanCompleteWorkflow() {
+        Purchase purchase = purchase("PR-FLOW");
+
+        service.move(purchase, new Submitted());
+
+        approval.approve(purchase.getId());
+        service.move(purchase, new Approved());
+
+        order.markAvailable(purchase.getId());
+        service.move(purchase, new Ordered());
+
+        completion.confirmDelivery(purchase.getId());
+        service.move(purchase, new Completed());
+
         assertEquals(new Completed(), purchase.getStatus());
     }
+
     @Test
-    void cannotApproveWithoutManagerApproval() {
-        Purchase purchase = new Purchase(new PurchaseId("p-1234554321"), "imac", 2, new BigDecimal("99999"));
-        purchaseService.move(purchase, new Submitted());
-        assertThrows(IllegalStateException.class, () -> purchaseService.move(purchase, new Approved()));
+    void cannotApproveWithoutApproval() {
+        Purchase purchase = purchase("PR-APPROVAL");
+
+        service.move(purchase, new Submitted());
+
+        assertThrows(
+                IllegalStateException.class,
+                () -> service.move(purchase, new Approved())
+        );
+    }
+
+    @Test
+    void sendsStatusToMockedPort() {
+        PurchaseRule rules = mock(PurchaseRule.class);
+        PurchaseJdbc db = mock(PurchaseJdbc.class);
+        PurchasePort port = mock(PurchasePort.class);
+
+        PurchaseService testService =
+                new PurchaseService(rules, db, port);
+
+        Purchase purchase = purchase("PR-MOCK");
+
+        testService.move(purchase, new Submitted());
+
+        verify(port).statusChanged(
+                purchase.getId(),
+                new Submitted()
+        );
+
+        verifyNoMoreInteractions(port);
+    }
+
+    private Purchase purchase(String key) {
+        return new Purchase(
+                PurchaseId.newId(),
+                key,
+                "Laptop",
+                1,
+                new BigDecimal("100.00")
+        );
     }
 }
