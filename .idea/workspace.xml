@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="828ff2d5-d03c-47a7-b2eb-c0e99c1f362a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/config/PurchasePort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/DuplicatePurchase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/purchase/persistence/PurchaseJdbc.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/config/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/config/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/config/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/config/PurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/config/RuleConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/config/RuleConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/PurchaseId.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/purchase/domain/status/PurchaseStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/purchase/domain/status/PurchaseStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/PurchaseIdTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/schemas.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/purchase/config/PurchaseDBTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/purchase/config/PurchaseDBTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,7 +163,7 @@
       <workItem from="1790327861759" duration="14455000" />
       <workItem from="1790928937853" duration="5158000" />
       <workItem from="1791014053863" duration="2679000" />
-      <workItem from="1791914025011" duration="2834000" />
+      <workItem from="1791914025011" duration="3586000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-package purchase;
+package purchase.config;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-class PurchaseDbTest {
+class PurchaseDBTest {
 
     @Autowired
     private JdbcTemplate jdbc;
