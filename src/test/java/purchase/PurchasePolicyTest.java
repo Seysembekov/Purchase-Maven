@@ -1,35 +1,62 @@
 package purchase;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import purchase.domain.Purchase;
+import purchase.domain.PurchaseId;
 import purchase.domain.rule.PurchasePolicy;
 import purchase.domain.status.*;
+
+import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PurchasePolicyTest {
+
     private final PurchasePolicy policy = new PurchasePolicy();
-    @Test
-    void draftCanBecomeSubmitted() {
-        assertTrue(policy.canTransition(new Draft(), new Submitted()));
+
+    @ParameterizedTest
+    @CsvSource({
+            "DRAFT, SUBMITTED, true",
+            "SUBMITTED, APPROVED, true",
+            "DRAFT, ORDERED, false",
+            "ORDERED, DRAFT, false"
+    })
+    void checksTransitions(
+            String from,
+            String to,
+            boolean allowed
+    ) {
+        Purchase purchase = new Purchase(
+                PurchaseId.newId(),
+                "PR-TEST",
+                "Laptop",
+                1,
+                new BigDecimal("10.00")
+        );
+
+        purchase.changeStatus(status(from));
+
+        if (allowed) {
+            assertDoesNotThrow(
+                    () -> policy.check(purchase, status(to))
+            );
+        } else {
+            assertThrows(
+                    IllegalStateException.class,
+                    () -> policy.check(purchase, status(to))
+            );
+        }
     }
-    @Test
-    void submittedCanBecomeApproved() {
-        assertTrue(policy.canTransition(new Submitted(), new Approved()));
-    }
-    @Test
-    void approvedCanBecomeOrdered() {
-        assertTrue(policy.canTransition(new Approved(), new Ordered()));
-    }
-    @Test
-    void orderedCanBecomeCompleted() {
-        assertTrue(policy.canTransition(new Ordered(), new Completed()));
-    }
-    @Test
-    void draftCannotBecomeOrdered() {
-        assertFalse(policy.canTransition(new Draft(), new Ordered()));
-    }
-    @Test
-    void completedCannotBecomeOrdered() {
-        assertFalse(policy.canTransition(new Completed(), new Ordered()));
+
+    private PurchaseStatus status(String name) {
+        return switch (name) {
+            case "DRAFT" -> new Draft();
+            case "SUBMITTED" -> new Submitted();
+            case "APPROVED" -> new Approved();
+            case "ORDERED" -> new Ordered();
+            case "COMPLETED" -> new Completed();
+            default -> throw new IllegalArgumentException(name);
+        };
     }
 }
