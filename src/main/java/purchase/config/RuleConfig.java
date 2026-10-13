@@ -30,7 +30,6 @@ public class RuleConfig {
     @Bean
     public PurchaseRule purchaseRule(PurchasePolicy purchasePolicy, DraftRule draftRule, ApprovalRule approvalRule, OrderRule orderRule, CompletionRule completionRule) {
         List<PurchaseRule> rules = List.of(purchasePolicy, draftRule, approvalRule, orderRule, completionRule);
-
         return (purchase, targetStatus) -> {
             for (PurchaseRule rule : rules) {
                 rule.check(purchase, targetStatus);

@@ -5,16 +5,11 @@ import purchase.domain.rule.PurchaseRule;
 import purchase.domain.status.*;
 
 public class PurchasePolicy implements PurchaseRule {
-
     @Override
     public void check(Purchase purchase, PurchaseStatus targetStatus) {
         if (!canTransition(purchase.getStatus(), targetStatus)) {
-            throw new IllegalStateException(
-                    "Invalid purchase status transition"
-            );
-        }
+            throw new IllegalStateException("Invalid purchase transition");}
     }
-
     public boolean canTransition(PurchaseStatus from, PurchaseStatus to) {
         if (from instanceof Draft) {
             return to instanceof Submitted;}
