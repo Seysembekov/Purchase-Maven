@@ -1,24 +1,17 @@
+
 package purchase.domain.rule;
 
 import purchase.domain.Purchase;
-import purchase.domain.PurchaseId;
-import purchase.domain.status.PurchaseStatus;
 import purchase.domain.status.Ordered;
-
-import java.util.HashSet;
-import java.util.Set;
+import purchase.domain.status.PurchaseStatus;
 
 public class OrderRule implements PurchaseRule {
-    private final Set<PurchaseId> availablePurchases = new HashSet<>();
+
     @Override
     public void check(Purchase purchase, PurchaseStatus targetStatus) {
-        if (targetStatus instanceof Ordered && !isAvailable(purchase)) {
-            throw new IllegalStateException("Product is not available");}
-    }
-    public void markAvailable(PurchaseId purchaseId) {
-        availablePurchases.add(purchaseId);
-    }
-    private boolean isAvailable(Purchase purchase) {
-        return availablePurchases.contains(purchase.getId());
+        if (targetStatus instanceof Ordered
+                && !purchase.isStockAvailable()) {
+            throw new IllegalStateException("Product is not available");
+        }
     }
 }

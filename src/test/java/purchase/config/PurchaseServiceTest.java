@@ -1,3 +1,4 @@
+
 package purchase.config;
 
 import org.junit.jupiter.api.Test;
@@ -5,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import purchase.domain.Purchase;
 import purchase.domain.PurchaseId;
-import purchase.domain.rule.ApprovalRule;
-import purchase.domain.rule.CompletionRule;
-import purchase.domain.rule.OrderRule;
 import purchase.domain.rule.PurchaseRule;
 import purchase.domain.status.*;
 import purchase.persistence.PurchaseJdbc;
@@ -23,45 +21,28 @@ class PurchaseServiceTest {
     @Autowired
     private PurchaseService service;
 
-    @Autowired
-    private ApprovalRule approval;
-
-    @Autowired
-    private OrderRule order;
-
-    @Autowired
-    private CompletionRule completion;
-
     @Test
     void purchaseCanCompleteWorkflow() {
         Purchase purchase = purchase("PR-FLOW");
-
         service.move(purchase, new Submitted());
-
-        approval.approve(purchase.getId());
+        purchase.markManagerApproved();
         service.move(purchase, new Approved());
-
-        order.markAvailable(purchase.getId());
+        purchase.markStockAvailable();
         service.move(purchase, new Ordered());
-
-        completion.confirmDelivery(purchase.getId());
+        purchase.confirmDelivery();
         service.move(purchase, new Completed());
-
         assertEquals(new Completed(), purchase.getStatus());
     }
 
     @Test
     void cannotApproveWithoutApproval() {
         Purchase purchase = purchase("PR-APPROVAL");
-
         service.move(purchase, new Submitted());
-
         assertThrows(
                 IllegalStateException.class,
                 () -> service.move(purchase, new Approved())
         );
     }
-
     @Test
     void sendsStatusToMockedPort() {
         PurchaseRule rules = mock(PurchaseRule.class);
@@ -82,7 +63,6 @@ class PurchaseServiceTest {
 
         verifyNoMoreInteractions(port);
     }
-
     private Purchase purchase(String key) {
         return new Purchase(
                 PurchaseId.newId(),

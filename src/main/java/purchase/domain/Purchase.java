@@ -1,3 +1,4 @@
+
 package purchase.domain;
 
 import purchase.domain.status.Draft;
@@ -15,13 +16,11 @@ public class Purchase {
 
     private PurchaseStatus status;
 
-    public Purchase(
-            PurchaseId id,
-            String businessKey,
-            String productName,
-            int quantity,
-            BigDecimal price
-    ) {
+    private boolean managerApproved;
+    private boolean stockAvailable;
+    private boolean deliveryConfirmed;
+
+    public Purchase(PurchaseId id, String businessKey, String productName, int quantity, BigDecimal price) {
         if (id == null) {
             throw new IllegalArgumentException(
                     "PurchaseId can't be null"
@@ -40,6 +39,9 @@ public class Purchase {
         this.quantity = quantity;
         this.price = price;
         this.status = new Draft();
+        this.managerApproved = false;
+        this.stockAvailable = false;
+        this.deliveryConfirmed = false;
     }
 
     public PurchaseId getId() {
@@ -74,5 +76,29 @@ public class Purchase {
         }
 
         this.status = status;
+    }
+
+    public boolean isManagerApproved() {
+        return managerApproved;
+    }
+
+    public void markManagerApproved() {
+        this.managerApproved = true;
+    }
+
+    public boolean isStockAvailable() {
+        return stockAvailable;
+    }
+
+    public void markStockAvailable() {
+        this.stockAvailable = true;
+    }
+
+    public boolean isDeliveryConfirmed() {
+        return deliveryConfirmed;
+    }
+
+    public void confirmDelivery() {
+        this.deliveryConfirmed = true;
     }
 }

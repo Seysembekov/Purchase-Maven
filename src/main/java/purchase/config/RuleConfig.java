@@ -13,37 +13,27 @@ public class RuleConfig {
     public PurchasePolicy purchasePolicy() {
         return new PurchasePolicy();
     }
-
     @Bean
     public DraftRule draftValidationRule() {
         return new DraftRule();
     }
-
     @Bean
     public ApprovalRule approvalRule() {
         return new ApprovalRule();
     }
-
     @Bean
     public OrderRule orderRule() {
         return new OrderRule();
     }
-
     @Bean
     public CompletionRule completionRule() {
         return new CompletionRule();
     }
-
     @Bean
     public PurchasePort purchasePort() {
-        return (id, status) ->
-                System.out.println(
-                        "Purchase " + id.value()
+        return (id, status) -> System.out.println("Purchase " + id.value()
                                 + " changed to "
-                                + status.getClass().getSimpleName()
-                );
-    }
-
+                                + status.getClass().getSimpleName());}
     @Bean
     public PurchaseRule purchaseRule(
             PurchasePolicy policy,

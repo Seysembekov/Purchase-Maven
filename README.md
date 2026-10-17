@@ -1,3 +1,4 @@
+
 # Purchase Management
 
 ## Product
@@ -6,24 +7,34 @@ Purchase Management is a small Java project that describes the lifecycle of a pu
 
 ## Core item
 
-The core item is a purchase. It has a validated identifier and one of three statuses: `Draft`, `Approved`, or `Ordered`.
+A purchase has a validated UUID and five statuses:
+DRAFT, SUBMITTED, APPROVED, ORDERED, and COMPLETED.
+
+## Lifecycle
+
+DRAFT → SUBMITTED → APPROVED → ORDERED → COMPLETED
 
 ## Status table
 
-| From     | To       | Result    |
-|----------|----------|-----------|
-| Draft    | Approved | Allowed   |
-| Approved | Ordered  | Allowed   |
-| Draft    | Ordered  | Forbidden |
-| Ordered  | Draft    | Forbidden |
+| From      | To        | Result    |
+|-----------|-----------|-----------|
+| DRAFT     | SUBMITTED | Allowed   |
+| SUBMITTED | APPROVED  | Allowed   |
+| DRAFT     | ORDERED   | Forbidden |
+| ORDERED   | DRAFT     | Forbidden |
 
 ## Forbidden — why
 
-`Draft → Ordered` is forbidden because a purchase must be approved before it can be ordered.
+DRAFT → ORDERED is forbidden because a purchase
+must pass the required stages before ordering.
 
-`Ordered → Draft` is forbidden because an ordered purchase cannot return to the draft stage.
+ORDERED → DRAFT is forbidden because an ordered
+purchase cannot return to the draft stage.
 
-**Run tests**
+## Tests
+
+Run the tests against PostgreSQL:
 
 ```bash
-mvn test
+mvn -q verify
+```
