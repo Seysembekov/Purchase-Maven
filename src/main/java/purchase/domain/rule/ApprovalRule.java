@@ -1,24 +1,17 @@
+
 package purchase.domain.rule;
 
 import purchase.domain.Purchase;
-import purchase.domain.PurchaseId;
-import purchase.domain.status.PurchaseStatus;
 import purchase.domain.status.Approved;
-
-import java.util.HashSet;
-import java.util.Set;
+import purchase.domain.status.PurchaseStatus;
 
 public class ApprovalRule implements PurchaseRule {
-    private final Set<PurchaseId> approvedPurchases = new HashSet<>();
+
     @Override
     public void check(Purchase purchase, PurchaseStatus targetStatus) {
-        if (targetStatus instanceof Approved && !isApproved(purchase)) {
-            throw new IllegalStateException("approval is required");}
-    }
-    public void approve(PurchaseId purchaseId) {
-        approvedPurchases.add(purchaseId);
-    }
-    private boolean isApproved(Purchase purchase) {
-        return approvedPurchases.contains(purchase.getId());
+        if (targetStatus instanceof Approved
+                && !purchase.isManagerApproved()) {
+            throw new IllegalStateException("approval is required");
+        }
     }
 }

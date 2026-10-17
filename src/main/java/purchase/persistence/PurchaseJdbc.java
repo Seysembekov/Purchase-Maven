@@ -1,3 +1,4 @@
+
 package purchase.persistence;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +13,6 @@ import java.util.UUID;
 
 @Repository
 public class PurchaseJdbc {
-
     private final JdbcTemplate jdbc;
 
     public PurchaseJdbc(JdbcTemplate jdbc) {
@@ -24,15 +24,19 @@ public class PurchaseJdbc {
                 """
                 INSERT INTO purchase_request
                     (id, business_key, status,
-                     product_name, quantity, price)
-                VALUES (?, ?, ?, ?, ?, ?)
+                     product_name, quantity, price,
+                     manager_approved, stock_available, delivery_confirmed)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
                 """,
                 UUID.fromString(purchase.getId().value()),
                 purchase.getBusinessKey(),
                 statusText(purchase.getStatus()),
                 purchase.getProductName(),
                 purchase.getQuantity(),
-                purchase.getPrice()
+                purchase.getPrice(),
+                purchase.isManagerApproved(),
+                purchase.isStockAvailable(),
+                purchase.isDeliveryConfirmed()
         );
     }
 
@@ -54,24 +58,30 @@ public class PurchaseJdbc {
         List<Purchase> result = jdbc.query(
                 """
                 SELECT id, business_key, status,
-                       product_name, quantity, price
+                       product_name, quantity, price,
+                       manager_approved, stock_available, delivery_confirmed
                 FROM purchase_request
                 WHERE business_key = ?
                 """,
                 (rs, row) -> {
                     Purchase purchase = new Purchase(
-                            new PurchaseId(
-                                    rs.getObject("id", UUID.class).toString()
-                            ),
+                            new PurchaseId(rs.getObject("id", UUID.class).toString()),
                             rs.getString("business_key"),
                             rs.getString("product_name"),
                             rs.getInt("quantity"),
                             rs.getBigDecimal("price")
                     );
-
-                    purchase.changeStatus(
-                            readStatus(rs.getString("status"))
+                    purchase.changeStatus(readStatus(rs.getString("status"))
                     );
+                    if (rs.getBoolean("manager_approved")) {
+                        purchase.markManagerApproved();
+                    }
+                    if (rs.getBoolean("stock_available")) {
+                        purchase.markStockAvailable();
+                    }
+                    if (rs.getBoolean("delivery_confirmed")) {
+                        purchase.confirmDelivery();
+                    }
 
                     return purchase;
                 },
