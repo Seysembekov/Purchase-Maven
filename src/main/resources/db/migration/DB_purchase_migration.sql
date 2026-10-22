@@ -1,6 +1,4 @@
-
-CREATE TABLE purchase_request (
-    id UUID PRIMARY KEY,
+CREATE TABLE purchase_request (id UUID PRIMARY KEY,
     business_key TEXT NOT NULL UNIQUE,
     status TEXT NOT NULL,
     product_name TEXT NOT NULL,
@@ -11,4 +9,4 @@ CREATE TABLE purchase_request (
     delivery_confirmed BOOLEAN NOT NULL DEFAULT FALSE,
     created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     CONSTRAINT purchase_request_status_known
-    CHECK (status IN ('DRAFT', 'SUBMITTED','APPROVED','ORDERED','COMPLETED' ) ));
+    CHECK (status IN ('DRAFT','SUBMITTED','APPROVED','ORDERED','COMPLETED')));

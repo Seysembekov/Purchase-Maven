@@ -1,4 +1,3 @@
-
 package purchase.domain;
 
 import purchase.domain.status.Draft;
@@ -20,16 +19,22 @@ public class Purchase {
     private boolean stockAvailable;
     private boolean deliveryConfirmed;
 
-    public Purchase(PurchaseId id, String businessKey, String productName, int quantity, BigDecimal price) {
+    public Purchase(
+            PurchaseId id,
+            String businessKey,
+            String productName,
+            int quantity,
+            BigDecimal price
+    ) {
         if (id == null) {
             throw new IllegalArgumentException(
-                    "PurchaseId can't be null"
+                    "PurchaseId cannot be null"
             );
         }
 
         if (businessKey == null || businessKey.isBlank()) {
             throw new IllegalArgumentException(
-                    "Business key can't be empty"
+                    "Business key cannot be empty"
             );
         }
 
@@ -38,7 +43,9 @@ public class Purchase {
         this.productName = productName;
         this.quantity = quantity;
         this.price = price;
+
         this.status = new Draft();
+
         this.managerApproved = false;
         this.stockAvailable = false;
         this.deliveryConfirmed = false;
@@ -68,34 +75,34 @@ public class Purchase {
         return status;
     }
 
-    public void changeStatus(PurchaseStatus status) {
-        if (status == null) {
-            throw new IllegalArgumentException(
-                    "Status can't be null"
-            );
-        }
-
-        this.status = status;
-    }
-
     public boolean isManagerApproved() {
         return managerApproved;
-    }
-
-    public void markManagerApproved() {
-        this.managerApproved = true;
     }
 
     public boolean isStockAvailable() {
         return stockAvailable;
     }
 
-    public void markStockAvailable() {
-        this.stockAvailable = true;
-    }
-
     public boolean isDeliveryConfirmed() {
         return deliveryConfirmed;
+    }
+
+    public void changeStatus(PurchaseStatus status) {
+        if (status == null) {
+            throw new IllegalArgumentException(
+                    "Status cannot be null"
+            );
+        }
+
+        this.status = status;
+    }
+
+    public void markManagerApproved() {
+        this.managerApproved = true;
+    }
+
+    public void markStockAvailable() {
+        this.stockAvailable = true;
     }
 
     public void confirmDelivery() {
