@@ -1,4 +1,3 @@
-
 package purchase.config;
 
 import org.junit.jupiter.api.Test;
@@ -8,7 +7,7 @@ import purchase.domain.Purchase;
 import purchase.domain.PurchaseId;
 import purchase.domain.rule.PurchaseRule;
 import purchase.domain.status.*;
-import purchase.persistence.PurchaseJdbc;
+import purchase.persistence.PurchaseJpa;
 
 import java.math.BigDecimal;
 
@@ -24,29 +23,43 @@ class PurchaseServiceTest {
     @Test
     void purchaseCanCompleteWorkflow() {
         Purchase purchase = purchase("PR-FLOW");
+
         service.move(purchase, new Submitted());
+
         purchase.markManagerApproved();
         service.move(purchase, new Approved());
+
         purchase.markStockAvailable();
         service.move(purchase, new Ordered());
+
         purchase.confirmDelivery();
         service.move(purchase, new Completed());
-        assertEquals(new Completed(), purchase.getStatus());
+
+        assertEquals(
+                new Completed(),
+                purchase.getStatus()
+        );
     }
 
     @Test
     void cannotApproveWithoutApproval() {
         Purchase purchase = purchase("PR-APPROVAL");
+
         service.move(purchase, new Submitted());
+
         assertThrows(
                 IllegalStateException.class,
-                () -> service.move(purchase, new Approved())
+                () -> service.move(
+                        purchase,
+                        new Approved()
+                )
         );
     }
+
     @Test
     void sendsStatusToMockedPort() {
         PurchaseRule rules = mock(PurchaseRule.class);
-        PurchaseJdbc db = mock(PurchaseJdbc.class);
+        PurchaseJpa db = mock(PurchaseJpa.class);
         PurchasePort port = mock(PurchasePort.class);
 
         PurchaseService testService =
@@ -63,6 +76,7 @@ class PurchaseServiceTest {
 
         verifyNoMoreInteractions(port);
     }
+
     private Purchase purchase(String key) {
         return new Purchase(
                 PurchaseId.newId(),
