@@ -1,0 +1,12 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/css
+    username: css
+    password: css
+    driver-class-name: org.postgresql.Driver
+
+app:
+  downstream:
+    base-url: http://localhost:9090
+    timeout: 2s

@@ -1,3 +1,4 @@
+
 package purchase.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -7,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import purchase.domain.DuplicatePurchase;
 import purchase.domain.Purchase;
 import purchase.domain.PurchaseId;
+import purchase.domain.PurchaseNotFound;
 import purchase.domain.rule.PurchaseRule;
 import purchase.domain.status.PurchaseStatus;
 import purchase.persistence.PurchaseJpa;
@@ -55,9 +57,6 @@ public class PurchaseService {
     public void register(Purchase purchase) {
         try {
             db.insert(purchase);
-
-            // Force the INSERT now so the exception
-            // can be translated inside this method.
             db.flush();
 
         } catch (DataIntegrityViolationException ex) {
@@ -70,6 +69,12 @@ public class PurchaseService {
 
             throw ex;
         }
+    }
+
+    @Transactional(readOnly = true)
+    public Purchase getById(PurchaseId id) {
+        return db.findById(id)
+                .orElseThrow(() -> new PurchaseNotFound(id));
     }
 
     @Transactional
@@ -93,10 +98,7 @@ public class PurchaseService {
         db.insert(first);
 
         try {
-            // Different UUID, same business key.
             db.insert(second);
-
-            // Force both pending INSERT statements to execute.
             db.flush();
 
         } catch (DataIntegrityViolationException ex) {
@@ -118,9 +120,7 @@ public class PurchaseService {
 
         while (current != null) {
             if (current instanceof SQLException sqlException
-                    && "23505".equals(
-                    sqlException.getSQLState()
-            )) {
+                    && "23505".equals(sqlException.getSQLState())) {
                 return true;
             }
 

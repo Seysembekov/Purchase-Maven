@@ -16,16 +16,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class TransactionDemoTest {
-
     @Autowired
     private JdbcTemplate jdbc;
-
     @Autowired
     private PurchaseService service;
-
     @Autowired
     private PurchaseJpa purchases;
-
     @BeforeEach
     void cleanRows() {
         jdbc.update("DELETE FROM purchase_request");
@@ -37,18 +33,13 @@ class TransactionDemoTest {
                 DuplicatePurchase.class,
                 () -> service.insertTwice("DEMO-ROLLBACK")
         );
+        int afterRollback = purchases.count("DEMO-ROLLBACK");
 
-        int afterRollback =
-                purchases.count("DEMO-ROLLBACK");
-
-        System.out.println(
-                "Rows after rollback: " + afterRollback
-        );
+        System.out.println("Rows after rollback: " + afterRollback);
 
         assertEquals(0, afterRollback);
 
-        service.register(
-                purchase("DEMO-COMMIT", "Laptop")
+        service.register(purchase("DEMO-COMMIT", "Laptop")
         );
 
         System.out.println("First registration committed.");
@@ -70,17 +61,10 @@ class TransactionDemoTest {
 
         assertEquals(1, afterSecondRequest);
     }
-
     private Purchase purchase(
             String key,
             String productName
     ) {
-        return new Purchase(
-                PurchaseId.newId(),
-                key,
-                productName,
-                1,
-                new BigDecimal("100.00")
-        );
+        return new Purchase(PurchaseId.newId(), key, productName, 1, new BigDecimal("100.00"));
     }
 }

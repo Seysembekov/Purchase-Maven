@@ -1,9 +1,11 @@
+
 package purchase.persistence;
 
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import purchase.domain.Purchase;
+import purchase.domain.PurchaseId;
 
 import java.util.List;
 import java.util.Optional;
@@ -66,6 +68,17 @@ public class PurchaseJpa {
 
         return result.stream()
                 .findFirst()
+                .map(mapper::toDomain);
+    }
+
+    @Transactional(readOnly = true)
+    public Optional<Purchase> findById(PurchaseId id) {
+        PurchaseEntity entity = entityManager.find(
+                PurchaseEntity.class,
+                java.util.UUID.fromString(id.value())
+        );
+
+        return Optional.ofNullable(entity)
                 .map(mapper::toDomain);
     }
 }

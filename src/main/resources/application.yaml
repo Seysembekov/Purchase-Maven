@@ -1,0 +1,56 @@
+
+spring:
+  application:
+    name: purchase-management
+
+  profiles:
+    default: dev
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+    out-of-order: false
+    clean-disabled: true
+
+  sql:
+    init:
+      mode: never
+
+server:
+  error:
+    include-stacktrace: never
+    include-message: never
+    include-binding-errors: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+  endpoint:
+    health:
+      show-details: never
+
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: Purchase Management
+    description: Purchase request lifecycle management
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
