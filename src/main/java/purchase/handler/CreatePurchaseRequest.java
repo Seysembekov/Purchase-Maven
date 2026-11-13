@@ -7,23 +7,13 @@ import jakarta.validation.constraints.Size;
 
 @Schema(description = "Data required to create a purchase")
 public record CreatePurchaseRequest(
-
         @NotBlank(message = "must not be blank")
-        @Schema(
-                description = "Unique business key",
-                example = "PR-2026-001",
-                requiredMode = Schema.RequiredMode.REQUIRED
-        )
+        @Schema(description = "Unique business key", example = "PR-2026-001", requiredMode = Schema.RequiredMode.REQUIRED)
         String businessKey,
 
         @NotBlank(message = "must not be blank")
         @Size(max = 120)
-        @Schema(
-                description = "Purchase title",
-                example = "Laptop",
-                maxLength = 120,
-                requiredMode = Schema.RequiredMode.REQUIRED
-        )
+        @Schema(description = "Purchase title", example = "Laptop", maxLength = 120, requiredMode = Schema.RequiredMode.REQUIRED)
         String title
 ) {
 }

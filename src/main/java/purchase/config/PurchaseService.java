@@ -1,4 +1,3 @@
-
 package purchase.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -130,3 +129,4 @@ public class PurchaseService {
         return false;
     }
 }
+
