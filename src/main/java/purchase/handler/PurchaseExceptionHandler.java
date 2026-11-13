@@ -31,21 +31,14 @@ public class PurchaseExceptionHandler {
         }
         return id;
     }
-
     private ResponseEntity<ApiErrorResponse> error(HttpStatus status,String code,String message,HttpServletRequest request) {
         return ResponseEntity.status(status).body(new ApiErrorResponse(code, message, correlationId(request))
         );
     }
     @ExceptionHandler(InvalidPurchaseId.class)
-    public ResponseEntity<ApiErrorResponse> handleInvalidPurchaseId(
-            InvalidPurchaseId ex,
-            HttpServletRequest request
+    public ResponseEntity<ApiErrorResponse> handleInvalidPurchaseId(InvalidPurchaseId ex, HttpServletRequest request
     ) {
-        return error(
-                HttpStatus.BAD_REQUEST,
-                "VALIDATION",
-                "id must be a UUID",
-                request
+        return error(HttpStatus.BAD_REQUEST, "VALIDATION", "id must be a UUID", request
         );
     }
 
@@ -54,10 +47,7 @@ public class PurchaseExceptionHandler {
             MethodArgumentNotValidException ex,
             HttpServletRequest request
     ) {
-        String message = ex.getBindingResult()
-                .getFieldErrors()
-                .stream()
-                .findFirst()
+        String message = ex.getBindingResult().getFieldErrors().stream().findFirst()
                 .map(fieldError ->
                         fieldError.getField() + " " +
                                 fieldError.getDefaultMessage()

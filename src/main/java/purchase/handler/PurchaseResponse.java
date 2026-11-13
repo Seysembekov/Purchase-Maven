@@ -11,7 +11,6 @@ public record PurchaseResponse(
         String businessKey,
         @Schema(description = "Current purchase status", example = "DRAFT")
         String status,
-
         @Schema(description = "Purchase title")
         String title
 ) {

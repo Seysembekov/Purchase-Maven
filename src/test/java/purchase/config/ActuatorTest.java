@@ -19,27 +19,22 @@ class ActuatorTest {
     @Test
     void healthEndpointReturnsUp() throws Exception {
 
-        mockMvc.perform(get("/actuator/health"))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.status").value("UP"));
+        mockMvc.perform(get("/actuator/health")).andExpect(status().isOk()).andExpect(jsonPath("$.status").value("UP"));
     }
     @Test
     void infoEndpointIsAvailable() throws Exception {
-
         mockMvc.perform(get("/actuator/info"))
                 .andExpect(status().isOk());
     }
 
     @Test
     void environmentEndpointIsNotExposed() throws Exception {
-
         mockMvc.perform(get("/actuator/env"))
                 .andExpect(status().isNotFound());
     }
     @Test
     void heapdumpEndpointIsNotExposed() throws Exception {
 
-        mockMvc.perform(get("/actuator/heapdump"))
-                .andExpect(status().isNotFound());
+        mockMvc.perform(get("/actuator/heapdump")).andExpect(status().isNotFound());
     }
 }
