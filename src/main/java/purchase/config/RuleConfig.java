@@ -11,9 +11,7 @@ public class RuleConfig {
 
     @Bean
     public PurchasePolicy purchasePolicy() {
-        return new PurchasePolicy();
-    }
-
+        return new PurchasePolicy();}
     @Bean
     public DraftRule draftValidationRule() {
         return new DraftRule();

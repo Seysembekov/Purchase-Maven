@@ -12,24 +12,15 @@ import java.util.UUID;
 @Entity
 @Table(name = "purchase_request")
 public class PurchaseEntity {
-
     @Id
     @Column(name = "id", nullable = false, columnDefinition = "uuid")
     private UUID id;
 
-    @Column(
-            name = "business_key",
-            nullable = false,
-            unique = true,
-            columnDefinition = "text"
+    @Column(name = "business_key", nullable = false, unique = true, columnDefinition = "text"
     )
     private String businessKey;
 
-    @Column(
-            name = "status",
-            nullable = false,
-            columnDefinition = "text"
-    )
+    @Column(name = "status", nullable = false, columnDefinition = "text")
     private String status;
 
     @Column(
